@@ -1,17 +1,29 @@
 import openpyxl
 
 wb = openpyxl.load_workbook('Przepis.xlsx')
-wb.get_sheet_names()
-sheet = wb.get_sheet_by_name('Sheet1')
-sheet['A1'].value
+print(wb.get_sheet_names())
+sheet = wb['Pasztet']
+sheet.title = 'Pasztet'
+wb.save('Przepis.xlsx')
+print(sheet['A1'].value)
 wb.save('PrzepisSaved.xlsx')
-sheet.title
-sheet.title = 'My sheet name'
 sheet.cell(row = 1, column = 3).value
 
-for i in range(1,5): print(sheet.cell(row = i, column = 3).value)
+for i in range(1,sheet.max_row): print(sheet.cell(row = i, column = 3).value)
 
 print(sheet.max_row)
 print(sheet.max_column)
 
+print(openpyxl.cell.get_column_letter(1))
+
+wb.create_sheet(title='My Sheet Name', index=1)
+
+sheet.row_dimensions[1].height=70
+sheet.column_dimensions['B'].width=20
+
+from openpyxl.styles import Font
+sheet['B1'].font = Font(sz=14, bold=True, italic=True)
+
+
+exit(0)
 
