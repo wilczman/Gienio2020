@@ -1,7 +1,7 @@
 import openpyxl
 
 wb = openpyxl.load_workbook('Przepis.xlsx')
-print(wb.get_sheet_names())
+print(wb.sheetnames)
 sheet = wb['Pasztet']
 sheet.title = 'Pasztet'
 wb.save('Przepis.xlsx')
