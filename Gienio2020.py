@@ -11,7 +11,8 @@ AMOUNT = 200    # TODO
 
 
 def get_position(string):
-    print(f"This is entry: {string}")
+    # print(f"This is entry: {string}")
+    wb = openpyxl.load_workbook(RECIPE_FILE_NAME)
     if string.isnumeric():  # TODO
         format_response('numeric is currently unavailable')
     elif string == '':
@@ -19,13 +20,12 @@ def get_position(string):
         entry_name.delete(0, 'end')
         entry_amount.place_forget()
         print_button.place_forget()
-    elif fileWithChoosing.search(string) == 0:
+    elif fileWithChoosing.search(string, wb) == 0:
         format_response("Nie znaleziono pozycji!")
         entry_name.delete(0, 'end')
         entry_amount.place_forget()
         print_button.place_forget()
     else:
-        wb = openpyxl.load_workbook(RECIPE_FILE_NAME)
         name = fileWithChoosing.search(string, wb)
         sheet = wb[name]
         format_response(f'Wybrano produkt: {name}\n\nWprowadź ilość')
@@ -37,7 +37,7 @@ def get_amount(number, name):
     if number.isnumeric():
         try:
             wb = openpyxl.load_workbook(RECIPE_FILE_NAME)
-            name = fileWithChoosing.search(name)
+            name = fileWithChoosing.search(name, wb)
             sheet = wb[name]
             output = ''
             output += f' Na {number} kg produktu: {name}, potrzebujesz: \n\n'
