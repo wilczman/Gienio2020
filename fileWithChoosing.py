@@ -27,12 +27,11 @@ def type_amount():  # Asks to type amount then returns it (exits on anything inc
             continue
 
 
-def search(inp):    # Searches excel file for input name, returns it or prints 'not found' -> returns 0
-    wb = openpyxl.load_workbook('Przepis.xlsx')
+def search(inp, wb):    # Searches excel file for input name, returns it or prints 'not found' -> returns 0
     tab_of_sheets = wb.sheetnames
     for name in tab_of_sheets:
-        if inp in name.lower():
-            print("Wybrano produkt: " + name)
+        if inp.lower() in name.lower():
+            # print("Wybrano produkt: " + name)
             return name
         else:
             continue
@@ -54,6 +53,6 @@ if __name__ == "__main__":
         amount = type_amount()
         wb = openpyxl.load_workbook('Przepis.xlsx')
         sheet = wb[name]
-        print('Potrzebujesz: ')
+        # print('Potrzebujesz: ')
         for row in range(2, sheet.max_row):
             print(f"{sheet['A'+ str(row)].value}: {round(sheet['B'+ str(row)].value/100 * amount, 3)}{sheet['C'+ str(row)].value}")
