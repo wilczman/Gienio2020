@@ -7,7 +7,6 @@ import testPrint
 RECIPE_FILE_NAME = 'Przepis.xlsx'
 HEIGHT = 700
 WIDTH = 800
-AMOUNT = 200    # TODO
 
 
 def get_position(string):
