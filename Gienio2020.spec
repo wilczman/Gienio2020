@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['Gienio2020.py'],
-             pathex=['C:\\Users\\Kuba\\Desktop\\GIT\\excelExercisesPython'],
+a = Analysis(['gienio2020.py'],
+             pathex=['C:\\Users\\Kuba\\Desktop\\GIT\\Gienio2020'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -23,7 +23,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='Gienio2020',
+          name='gienio2020',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

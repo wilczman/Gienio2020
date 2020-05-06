@@ -39,9 +39,9 @@ def get_amount(number, name):
             name = fileWithChoosing.search(name, wb)
             sheet = wb[name]
             output = ''
-            output += f'Na {number} kg produktu: {name}, potrzebujesz: \n\n'
+            output += f"Na {number} {sheet['E2'].value} produktu: {name}, potrzebujesz: \n\n"
             for row in range(2, sheet.max_row+1):
-                output += f"{sheet['A' + str(row)].value}:      {round(sheet['B' + str(row)].value / 100 * int(number), 2)} {sheet['C' + str(row)].value}\n"
+                output += f"{sheet['A' + str(row)].value}:      {round(sheet['B' + str(row)].value / sheet['G1'].value * int(number), 2)} {sheet['C' + str(row)].value}\n"
                 format_response(output)
             amount_button.place_forget()
             entry_amount.place_forget()
